@@ -55,5 +55,9 @@ public class Main {
             System.out.println("Error en la pregunta Sí/No: " + e.getMessage());
         }
         System.out.println();
+
+        System.out.println("Final de l'aplicació. Gràcies per utilitzar-la!");
     }
+
+
 }
