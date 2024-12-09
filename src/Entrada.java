@@ -1,10 +1,11 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
+//! Gestiona la entrada de datos desde el usuario con validación
 public class Entrada {
-
     private static Scanner scanner = new Scanner(System.in);
 
+    // Metodo que lee un valor byte.
     public static byte llegirByte(String missatge) {
         byte valorByte = 0;
         boolean correcte = false;
@@ -23,6 +24,7 @@ public class Entrada {
         return valorByte;
     }
 
+    // Metodo que lee un entero
     public static int llegirInt(String missatge) {
         int valorInt = 0;
         boolean correcte = false;
@@ -41,6 +43,7 @@ public class Entrada {
         return valorInt;
     }
 
+    // Metodo que lee un número decimal
     public static float llegirFloat(String missatge) {
         float valorFloat = 0.0f;
         boolean correcte = false;
@@ -59,7 +62,7 @@ public class Entrada {
         return valorFloat;
     }
 
-
+    // Metodo que un número decimal de precisión doble
     public static double llegirDouble(String missatge) {
         double valorDouble = 0.0;
         boolean correcte = false;
@@ -77,7 +80,8 @@ public class Entrada {
         return valorDouble;
     }
 
-    public static char llegirChar(String missatge) throws FormatInvalidException {
+    // Metodo que lee un carácter con validación personalizada
+    public static char llegirChar(String missatge) {
         char resultat = '\0';
         boolean correcte = false;
 
@@ -85,15 +89,17 @@ public class Entrada {
             System.out.println(missatge + " (Introdueix un únic caràcter i prem ENTER)");
             String entrada = scanner.nextLine();
             if (entrada.length() != 1) {
-                throw new FormatInvalidException("Error de format. Introdueix un únic caràcter.");
+                System.out.println("Error de format. Introdueix un únic caràcter.");
+            } else {
+                resultat = entrada.charAt(0);
+                correcte = true;
             }
-            resultat = entrada.charAt(0);
-            correcte = true;
         }
         return resultat;
     }
 
-    public static String llegirString(String missatge) throws FormatInvalidException {
+    // Metodo que lee una cadena no vacía
+    public static String llegirString(String missatge) {
         String resultat = "";
         boolean correcte = false;
 
@@ -101,13 +107,15 @@ public class Entrada {
             System.out.println(missatge + " (Introdueix un text no buit i prem ENTER)");
             resultat = scanner.nextLine();
             if (resultat.trim().isEmpty()) {
-                throw new FormatInvalidException("Error de format. El text no pot estar buit.");
+                System.out.println("Error de format. El text no pot estar buit.");
+            } else {
+                correcte = true;
             }
-            correcte = true;
         }
         return resultat;
     }
 
+    // Metodo que lee una respuesta "Sí" o "No"
     public static boolean llegirSiNo(String missatge) throws FormatInvalidException {
         boolean resultat = false;
         boolean correcte = false;
